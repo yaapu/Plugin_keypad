@@ -87,28 +87,28 @@
 #include "keypad.h"
 
 #ifndef MACRO_KEY0
-#define MACRO_KEY0 0x18
+#define MACRO_KEY0 0xF0
 #endif
 #ifndef MACRO_KEY1
-#define MACRO_KEY1 0x19
+#define MACRO_KEY1 0xF1
 #endif
 #ifndef MACRO_KEY2
-#define MACRO_KEY2 0x1B
+#define MACRO_KEY2 0xF2
 #endif
 #ifndef MACRO_KEY3
-#define MACRO_KEY3 0x1A
+#define MACRO_KEY3 0xF3
 #endif
 #ifndef MACRO_KEY4
-#define MACRO_KEY4 0x7D
+#define MACRO_KEY4 0xF4
 #endif
 #ifndef MACRO_KEY5
-#define MACRO_KEY5 0x7C
+#define MACRO_KEY5 0xF5
 #endif
 #ifndef MACRO_KEY6
-#define MACRO_KEY6 0x7E
+#define MACRO_KEY6 0xF6
 #endif
 #ifndef MACRO_KEY7
-#define MACRO_KEY7 0x7F
+#define MACRO_KEY7 0xF7
 #endif
 
 static on_keypress_preview_ptr on_keypress_preview;

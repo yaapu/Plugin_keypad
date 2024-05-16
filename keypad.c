@@ -419,6 +419,23 @@ ISR_CODE bool ISR_FUNC(keypad_enqueue_keycode)(char c)
         return true;
 #endif
 
+    sys_state_t state = state_get();
+    // if the keycode is an unlock, reset command or status request
+    // execute them immediately as the command queue
+    // is not processed while in estop or alarm.
+    switch (c){
+        case CMD_RESET:
+            if ((state & STATE_ESTOP) == STATE_ESTOP || (state & STATE_ALARM) == STATE_ALARM)
+                grbl.enqueue_realtime_command(CMD_RESET);
+            break;
+        case 'X':
+            grbl.enqueue_realtime_command(CMD_STOP);
+            break;
+        case '?':
+            grbl.enqueue_realtime_command(CMD_STATUS_REPORT);
+            break;
+    }   
+    
     if(c == CMD_JOG_CANCEL || c == ASCII_CAN) {
         keyreleased = true;
         if(jogging) {
